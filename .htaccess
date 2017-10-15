@@ -1,0 +1,13 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # fix one domain name with HTTPS
+    #
+    #RewriteCond %{HTTP_HOST} ^yourdomain.ccom [NC]
+    #RewriteRule ^(.*)$ https://www.yourdomain.ccom/$1 [L,R=301]
+
+    # fix for poor hosting without www_root setup
+    #
+    RewriteCond %{REQUEST_URI} !^/web
+    RewriteRule ^(.*)$ /web/$1 [NC,L]
+</IfModule>

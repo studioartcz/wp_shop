@@ -1,0 +1,78 @@
+{
+  "name": "studioartcz/wp_shop",
+  "description": "WP based ecommerce solution, inspired by Bedrock",
+  "type": "project",
+  "license": "GPL-2.0+",
+  "authors": [
+    {
+      "name": "Michal Landsman",
+      "email": "landsman@studioart.cz",
+      "homepage": "https://github.com/landsman"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/studioartcz/wp/issues"
+  },
+  "config": {
+    "preferred-install": "dist"
+  },
+  "repositories":[
+    {
+      "type":"composer",
+      "url":"https://wpackagist.org"
+    }
+  ],
+  "require": {
+    "php": ">=5.6",
+    "johnpbloch/wordpress": "4.8.2",
+    "roots/wp-password-bcrypt": "1.0.0",
+    "wpackagist-plugin/woocommerce": "2.6.8",
+    "wpackagist-plugin/woocommerce-cestina": "2.5",
+    "wpackagist-plugin/woocommerce-mailchimp": "2.0.19",
+    "wpackagist-plugin/admin-menu-editor": "1.7.2",
+    "wpackagist-plugin/advanced-custom-fields": "4.4.11",
+    "wpackagist-plugin/aftership-woocommerce-tracking": "1.6.6",
+    "wpackagist-plugin/flexible-shipping": "1.6.2",
+    "wpackagist-plugin/maintenance": "3.1.1",
+    "wpackagist-plugin/menu-image": "2.7.0",
+    "wpackagist-plugin/metronet-tag-manager": "1.2.0",
+    "wpackagist-plugin/print-invoices-packing-slip-labels-for-woocommerce": "2.0.7",
+    "wpackagist-plugin/regenerate-thumbnails": "2.2.6",
+    "wpackagist-plugin/say-what": "1.8.0",
+    "wpackagist-plugin/wp-custom-category-meta": "1.1.0",
+    "wpackagist-plugin/sp-faq": "3.2.5",
+    "wpackagist-plugin/ceske-sluzby": "0.5"
+  },
+  "require-dev": {
+    "squizlabs/php_codesniffer": "^2.5.1",
+    "symfony/finder": "^3.2",
+    "symfony/console": "^3.2",
+    "symfony/filesystem": "^3.2"
+  },
+  "extra": {
+    "installer-paths": {
+      "web/app/mu-plugins/{$name}/": ["type:wordpress-muplugin"],
+      "web/app/plugins/{$name}/": ["type:wordpress-plugin"],
+      "web/app/themes/{$name}/": ["type:wordpress-theme"]
+    },
+    "wordpress-install-dir": "web/wp"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "autoload": {
+    "classmap": [
+      "scripts/composer/ScriptHandler.php"
+    ]
+  },
+  "scripts": {
+    "post-install-cmd": [
+      "StudioArtcz\\composer\\ScriptHandler::deployThemes"
+    ],
+    "post-update-cmd": [
+      "StudioArtcz\\composer\\ScriptHandler::deployThemes"
+    ],
+    "test": [
+      "vendor/bin/phpcs"
+    ]
+  }
+}
